@@ -1,19 +1,20 @@
 #!/bin/bash
-RED=`tput setaf 1`
-GREEN = `tput setaf 2`  
-reset=`tput sgr0`
-password = $1
-count =`echo ${#password}`
+password=$1
+echo $password
+RED='\e[0;31m';
+GREEN='\e[32m';
+reset='\e[0m';
 
-if [[ $count -ne 10 ]];then
-  echo "${RED}Password length should be 10 characters${reset}"
+count="${#password}"
+echo $count
+if [[ ${count} -lt 10 ]];then
+  echo -e ${RED}"Password length should be 10 characters \n" ${reset}
   exit 1;
   fi
 echo $password | grep "[A-Z]" | grep "[a-z]" | grep "[0-9]"
 if [[ $? -ne 0 ]];then
-echo "${RED}Password must contains upparcase ,lowecase and number${reset}"
+echo -e ${RED}"Password must contains upparcase ,lowecase and number \n"${reset}
 exit 1;
-fi
-echo "${GREEN}Strong Password${reset}"
-      
-
+ fi
+echo -e ${GREEN}"Strong Password \n"${reset}
+exit 0;
