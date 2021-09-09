@@ -1,12 +1,10 @@
 #!/bin/bash
 password=$1
-echo $password
 RED='\e[0;31m';
 GREEN='\e[32m';
 reset='\e[0m';
 
 count="${#password}"
-echo $count
 if [[ ${count} -lt 10 ]];then
   echo -e ${RED}"Password length should be 10 characters \n" ${reset}
   exit 1;
